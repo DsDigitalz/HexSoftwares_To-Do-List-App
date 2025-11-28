@@ -1,3 +1,12 @@
+:root {
+  --primary-color: #001923;
+  --secondary-color: #00406a;
+  --font-color: #fafafa;
+  /* --background-color: #270000f5; */
+  --border-radius: 8px;
+  --transition-duration: 0.3s;
+}
+
 * {
   box-sizing: border-box;
   margin: 0 auto;
@@ -5,5 +14,21 @@
 }
 
 body {
-  font-family: inter;
+  font-family: roboto;
+  color: var(--font-color);
+  background: linear-gradient(
+    180deg,
+    var(--secondary-color),
+    var(--primary-color)
+  );
+  background-repeat: no-repeat;
+  min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.site-header h1{
+    margin: 20px 0;
 }
