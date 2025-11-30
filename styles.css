@@ -2,15 +2,18 @@
   --primary-color: #001923;
   --secondary-color: #00406a;
   --font-color: #fafafa;
-  /* --background-color: #270000f5; */
   --border-radius: 8px;
   --transition-duration: 0.3s;
+  --muted: #9aa6b2;
+  --text: #e6eef3;
+  --accent: #6ee7b7;
+  --danger: #ff6b6b;
 }
 
 * {
   box-sizing: border-box;
-  margin: 0 auto;
-  padding: 0 auto;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -23,12 +26,204 @@ body {
   );
   background-repeat: no-repeat;
   min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.site-header h1{
-    margin: 20px 0;
+.main-content {
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 40px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.site-header h1 {
+  margin: 30px 0;
+}
+
+.task-form {
+  display: flex;
+  margin: 0px;
+  gap: 10px;
+}
+
+.task-input {
+  padding: 10px;
+  border-radius: var(--border-radius);
+  border: none;
+  color: var(--font-color);
+  background: transparent;
+  border: 1px solid rgb(255, 255, 255);
+  font-size: 16px;
+  transition: box-shadow var(--transition-duration);
+}
+.add-button {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  background: var(--secondary-color);
+  color: var(--font-color);
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.add-button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.add-button:active {
+  transform: translateY(1px);
+}
+
+/* List */
+.list-section {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.task-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+}
+.task-item .left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+.task-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+}
+.task-text {
+  font-size: 15px;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.task-text.completed {
+  text-decoration: line-through;
+  color: rgba(230, 238, 243, 0.45);
+}
+
+.text-btn {
+  font-size: 14px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.text-btn:hover {
+  background: rgba(110, 231, 183, 0.1);
+  transform: translateY(-1px);
+}
+
+.text-btn.delete-btn {
+  color: var(--danger);
+  border-color: rgba(255, 107, 107, 0.3);
+}
+
+.text-btn.delete-btn:hover {
+  background: rgba(255, 107, 107, 0.1);
+}
+
+/* Buttons on each item */
+.item-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.icon-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 13px;
+}
+.icon-btn:hover {
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+/* Controls */
+.list-controls {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+.secondary {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.danger {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 107, 107, 0.08),
+    rgba(255, 107, 107, 0.04)
+  );
+  color: var(--danger);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Empty text */
+.empty-text {
+  color: var(--muted);
+  margin-top: 12px;
+}
+
+/* Accessibility helper */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+.empty-text {
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .main-content {
+    font-size: 14px;
+    padding: 40px 20px;
+  }
+  .task-text {
+    font-size: 14px;
+  }
 }
